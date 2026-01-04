@@ -125,7 +125,6 @@ export function Sidebar() {
                   />
                 </span>
 
-                {/* Subtle shine effect on hover */}
                 <div className="absolute inset-0 translate-x-[-100%] group-hover:animate-[shimmer_1.5s_infinite] bg-gradient-to-r from-transparent via-white/5 to-transparent z-0" />
               </button>
             </li>

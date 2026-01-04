@@ -46,44 +46,22 @@ export async function POST(request: NextRequest) {
     // Création de l'embed Discord
     const embed = {
       title: "📧 Nouveau message de contact",
-      color: 0x8b5cf6, // Couleur violette (primary)
+      color: 0x8b5cf6,
       fields: [
-        {
-          name: "👤 Nom",
-          value: name,
-          inline: true,
-        },
-        {
-          name: "📮 Email",
-          value: email,
-          inline: true,
-        },
-        {
-          name: "📌 Sujet",
-          value: subject,
-          inline: false,
-        },
-        {
-          name: "💬 Message",
-          value: message.length > 1024 ? message.substring(0, 1021) + "..." : message,
-          inline: false,
-        },
+        { name: "👤 Nom", value: name, inline: true },
+        { name: "📮 Email", value: email, inline: true },
+        { name: "📌 Sujet", value: subject, inline: false },
+        { name: "💬 Message", value: message.length > 1024 ? message.substring(0, 1021) + "..." : message, inline: false },
       ],
-      footer: {
-        text: "Portfolio - Formulaire de contact",
-      },
+      footer: { text: "Portfolio - Formulaire de contact" },
       timestamp: new Date().toISOString(),
     }
 
     // Envoi au webhook Discord
     const response = await fetch(DISCORD_WEBHOOK_URL, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        embeds: [embed],
-      }),
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ embeds: [embed] }),
     })
 
     if (!response.ok) {
@@ -95,8 +73,7 @@ export async function POST(request: NextRequest) {
     console.error("Erreur lors de l'envoi du message:", error)
     return NextResponse.json(
       { error: "Une erreur est survenue lors de l'envoi du message" },
-      { status: 500 },
+      { status: 500 }
     )
   }
 }
-
