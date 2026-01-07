@@ -15,7 +15,7 @@ export default function Home() {
       <div className="flex min-h-screen">
         <Sidebar />
 
-        <main className="flex-1 ml-52">
+        <main className="flex-1 md:ml-52 pt-24 md:pt-0">
           <HeroSection />
           <AboutSection />
           <TechWatchSection />

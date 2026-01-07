@@ -41,8 +41,18 @@ export function FormationsSection() {
   const handleDownloadCV = () => {
     // Créer un lien de téléchargement
     const link = document.createElement("a")
-    link.href = "/CV_AHMET_BICER.pdf"
-    link.download = "CV_AHMET_BICER.pdf"
+    link.href = "/CV.pdf"
+    link.download = "CV.pdf"
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+  }
+
+  const handleDownloadSynthese = () => {
+    // Créer un lien de téléchargement pour le tableau de synthèse
+    const link = document.createElement("a")
+    link.href = "/TableauSynthese.pdf"
+    link.download = "TableauSynthese.pdf"
     document.body.appendChild(link)
     link.click()
     document.body.removeChild(link)
@@ -69,24 +79,21 @@ export function FormationsSection() {
             {formations.map((formation, index) => (
               <div
                 key={index}
-                className={`relative flex gap-8 transition-all duration-1000 ${
-                  isInView ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"
-                }`}
+                className={`relative flex gap-8 transition-all duration-1000 ${isInView ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"
+                  }`}
                 style={{ transitionDelay: `${index * 200}ms` }}
               >
                 {/* Point sur la timeline */}
                 <div className="relative z-10 flex-shrink-0 hidden md:block">
                   <div
-                    className={`w-16 h-16 rounded-full border-4 border-background flex items-center justify-center transition-all duration-500 group ${
-                      formation.isCurrent
-                        ? "bg-primary shadow-lg shadow-primary/50 scale-110 animate-pulse-glow"
-                        : "bg-primary/20 hover:bg-primary/40 hover:scale-105"
-                    }`}
+                    className={`w-16 h-16 rounded-full border-4 border-background flex items-center justify-center transition-all duration-500 group ${formation.isCurrent
+                      ? "bg-primary shadow-lg shadow-primary/50 scale-110 animate-pulse-glow"
+                      : "bg-primary/20 hover:bg-primary/40 hover:scale-105"
+                      }`}
                   >
                     <GraduationCap
-                      className={`w-6 h-6 transition-transform duration-300 group-hover:scale-110 ${
-                        formation.isCurrent ? "text-primary-foreground" : "text-primary"
-                      }`}
+                      className={`w-6 h-6 transition-transform duration-300 group-hover:scale-110 ${formation.isCurrent ? "text-primary-foreground" : "text-primary"
+                        }`}
                     />
                   </div>
                   {/* Glow autour du point pour la formation en cours */}
@@ -99,7 +106,7 @@ export function FormationsSection() {
                 <div className="flex-1 bg-card border border-border rounded-xl p-6 md:p-8 hover:border-primary transition-all duration-500 hover:shadow-lg hover:shadow-primary/10 group relative overflow-hidden">
                   {/* Effet de brillance au survol */}
                   <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/5 to-primary/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  
+
                   <div className="relative z-10">
                     <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
                       <div className="flex items-center gap-3 flex-wrap">
@@ -143,25 +150,49 @@ export function FormationsSection() {
 
         {/* Bouton de téléchargement du CV */}
         <div
-          className={`mt-20 flex flex-col items-center gap-4 transition-all duration-1000 delay-500 ${
-            isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-          }`}
+          className={`mt-20 flex flex-col items-center gap-8 transition-all duration-1000 delay-500 ${isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+            }`}
         >
-          <div className="text-center mb-2">
-            <p className="text-muted-foreground text-sm mb-1">Téléchargez mon CV complet</p>
-            <div className="w-24 h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto" />
+          <div className="flex flex-col md:flex-row gap-12">
+            {/* CV Download */}
+            <div className="flex flex-col items-center gap-4">
+              <div className="text-center">
+                <p className="text-muted-foreground text-sm mb-1 font-medium">Télécharger mon CV complet</p>
+                <div className="w-24 h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto" />
+              </div>
+              <Button
+                onClick={handleDownloadCV}
+                size="lg"
+                className="bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300 hover:scale-105 shadow-lg shadow-primary/20 hover:shadow-primary/40 px-8 py-6 text-lg font-semibold group relative overflow-hidden w-full md:w-auto"
+              >
+                <span className="relative z-10 flex items-center justify-center">
+                  <Download className="w-5 h-5 mr-2 group-hover:animate-bounce" />
+                  Télécharger mon CV
+                </span>
+                <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-white/10 to-primary/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+              </Button>
+            </div>
+
+            {/* Synthesis Table Download */}
+            <div className="flex flex-col items-center gap-4">
+              <div className="text-center">
+                <p className="text-muted-foreground text-sm mb-1 font-medium">Télécharger mon tableau de synthèse complet</p>
+                <div className="w-24 h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto" />
+              </div>
+              <Button
+                onClick={handleDownloadSynthese}
+                size="lg"
+                variant="outline"
+                className="border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-105 shadow-lg shadow-primary/5 hover:shadow-primary/20 px-8 py-6 text-lg font-semibold group relative overflow-hidden w-full md:w-auto"
+              >
+                <span className="relative z-10 flex items-center justify-center">
+                  <Download className="w-5 h-5 mr-2 group-hover:animate-bounce" />
+                  Télécharger mon tableau de synthèse
+                </span>
+                <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/10 to-primary/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+              </Button>
+            </div>
           </div>
-          <Button
-            onClick={handleDownloadCV}
-            size="lg"
-            className="bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300 hover:scale-105 shadow-lg shadow-primary/20 hover:shadow-primary/40 px-8 py-6 text-lg font-semibold group relative overflow-hidden"
-          >
-            <span className="relative z-10 flex items-center">
-              <Download className="w-5 h-5 mr-2 group-hover:animate-bounce" />
-              Télécharger mon CV
-            </span>
-            <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-white/10 to-primary/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
-          </Button>
         </div>
       </div>
     </section>

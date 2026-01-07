@@ -10,6 +10,7 @@ const projects = [
     description: "Reproduction d'une interface de streaming moderne avec carrousel, affichage responsive et fiches médias détaillées.",
     tags: ["HTML", "CSS", "JS"],
     image: "/netflix.jpg",
+    imageFit: "contain",
   },
   {
     title: "Maquette réseau sur Packet Tracer",
@@ -23,24 +24,42 @@ const projects = [
     description: "Sécurisation des échanges web avec certificat auto-signé et activation HTTPS sur Apache.",
     tags: ["SSL", "Apache", "Wireshark", "Sécurité"],
     image: "/ssl.jpg",
+    imageFit: "contain",
   },
   {
     title: "Installation Serveur Web Apache",
     description: "Hébergement d'un site PHP/MySQL sur Apache2 (Debian) avec Virtual Host et phpMyAdmin.",
     tags: ["Apache", "Debian", "PHP", "MySQL"],
     image: "/apache.png",
+    imageFit: "contain",
   },
   {
     title: "Déploiement Active Directory et DNS",
     description: "Mise en place d'un domaine Active Directory et gestion centralisée des utilisateurs.",
     tags: ["Active Directory", "DNS", "Windows Server"],
     image: "/activedirectory.png",
+    imageFit: "contain",
   },
   {
     title: "Reformatage de PC sous Linux",
     description: "Réinstallation complète d'un poste Linux : partitionnement, configuration réseau et utilitaires.",
     tags: ["Linux", "Système", "Administration"],
     image: "/linux.jpg",
+    imageFit: "contain",
+  },
+  {
+    title: "Certification Root-Me validée",
+    description: "Pratique sur des challenges de sécurité informatique (pentest, failles web, systèmes).",
+    tags: ["Root-Me", "Pentest", "Web", "Système"],
+    image: "/rootme.jpg",
+    imageFit: "contain",
+  },
+  {
+    title: "Certification MOOC de la CNIL validée",
+    description: "Compréhension du RGPD, des droits des personnes et des obligations des organisations.",
+    tags: ["CNIL", "RGPD", "Droit", "Conformité"],
+    image: "/cnil.jpg",
+    imageFit: "contain",
   },
 ]
 
