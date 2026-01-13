@@ -305,8 +305,44 @@ export function StagesSection() {
             </div>
           ))}
         </div>
+
+
+        {/* Bouton de téléchargement du Tableau de synthèse */}
+        <div
+          className={`mt-20 flex flex-col items-center gap-8 transition-all duration-1000 delay-500 ${isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+            }`}
+        >
+          <div className="flex flex-col md:flex-row gap-12">
+            {/* Synthesis Table Download */}
+            <div className="flex flex-col items-center gap-4">
+              <div className="text-center">
+                <p className="text-muted-foreground text-sm mb-1 font-medium">Télécharger mon tableau de synthèse complet</p>
+                <div className="w-24 h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto" />
+              </div>
+              <Button
+                onClick={() => {
+                  const link = document.createElement("a")
+                  link.href = "/TableauSynthese.pdf"
+                  link.download = "TableauSynthese.pdf"
+                  document.body.appendChild(link)
+                  link.click()
+                  document.body.removeChild(link)
+                }}
+                size="lg"
+                variant="outline"
+                className="border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-105 shadow-lg shadow-primary/5 hover:shadow-primary/20 px-8 py-6 text-lg font-semibold group relative overflow-hidden w-full md:w-auto"
+              >
+                <span className="relative z-10 flex items-center justify-center">
+                  <Download className="w-5 h-5 mr-2 group-hover:animate-bounce" />
+                  Télécharger mon tableau de synthèse
+                </span>
+                <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/10 to-primary/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+              </Button>
+            </div>
+          </div>
+        </div>
       </div>
-    </section>
+    </section >
   )
 }
 

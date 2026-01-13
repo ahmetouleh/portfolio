@@ -57,29 +57,14 @@ export function AboutSection() {
         >
           <div className="relative">
             <div
-              className={`overflow-hidden transition-all duration-500 ${
-                isExpanded ? "max-h-none" : "max-h-[400px]"
-              }`}
+              className={`overflow-hidden transition-all duration-500 ${isExpanded ? "max-h-none" : "max-h-[400px]"
+                }`}
             >
               <p className="text-xl text-muted-foreground leading-relaxed group-hover:text-foreground transition-colors duration-300 group-hover:[text-shadow:0_0_8px_rgba(139,92,246,0.4)]">
-                Étudiant en BTS Services Informatiques aux Organisations, spécialisé en SISR (Solutions d&apos;Infrastructure,
-                Systèmes et Réseaux), je suis passionné par l&apos;informatique sous toutes ses formes. Cette passion ne se limite
-                pas aux murs de l&apos;école : elle s&apos;étend à mon travail, à mon temps libre, et même à mes loisirs. L&apos;informatique
-                n&apos;est pas seulement une discipline que j&apos;étudie, c&apos;est un domaine dans lequel je m&apos;investis pleinement et avec
-                enthousiasme.
+                Étudiant en BTS Services Informatiques aux Organisations (SIO), option SISR, je suis passionné par l’informatique et les nouvelles technologies. Cet intérêt se reflète aussi bien dans mes études que dans mon temps libre, où je cherche constamment à développer mes compétences.
               </p>
               <p className="text-xl text-muted-foreground leading-relaxed mt-6 group-hover:text-foreground transition-colors duration-300 group-hover:[text-shadow:0_0_8px_rgba(139,92,246,0.4)]">
-                Ma curiosité insatiable pour l&apos;évolution des technologies informatiques me pousse constamment à explorer de
-                nouveaux horizons. Je suis particulièrement attiré par deux domaines qui me passionnent : la cybersécurité et les
-                réseaux. La cybersécurité représente pour moi un défi permanent, un terrain de jeu où la créativité et la rigueur
-                se rencontrent pour protéger les systèmes et les données. Les réseaux, quant à eux, m&apos;intriguent par leur
-                complexité et leur importance dans notre monde interconnecté.
-              </p>
-              <p className="text-xl text-muted-foreground leading-relaxed mt-6 group-hover:text-foreground transition-colors duration-300 group-hover:[text-shadow:0_0_8px_rgba(139,92,246,0.4)]">
-                En parallèle de ma passion pour l&apos;informatique, je cultive également un intérêt profond pour le sport, qui
-                m&apos;apporte équilibre et discipline. De plus, les jeux vidéo font partie intégrante de ma vie, non seulement comme
-                loisir, mais aussi comme source d&apos;inspiration pour comprendre les mécanismes techniques et les architectures
-                complexes qui les sous-tendent.
+                Je m’intéresse particulièrement aux domaines des réseaux et de la cybersécurité, qui représentent pour moi des enjeux majeurs du numérique actuel. Curieux et motivé, j’aime comprendre le fonctionnement des systèmes et relever les défis liés à la sécurisation des infrastructures informatiques.
               </p>
             </div>
 
@@ -90,21 +75,14 @@ export function AboutSection() {
 
             {/* Contenu supplémentaire */}
             <div
-              className={`overflow-hidden transition-all duration-500 ${
-                isExpanded ? "max-h-[1000px] opacity-100" : "max-h-0 opacity-0"
-              }`}
+              className={`overflow-hidden transition-all duration-500 ${isExpanded ? "max-h-[1000px] opacity-100" : "max-h-0 opacity-0"
+                }`}
             >
               <p className="text-xl text-muted-foreground leading-relaxed mt-6 group-hover:text-foreground transition-colors duration-300 group-hover:[text-shadow:0_0_8px_rgba(139,92,246,0.4)]">
-                Mon engagement dans l&apos;informatique est total : que ce soit à l&apos;école, au travail ou pendant mon temps libre,
-                je consacre une grande partie de mon énergie à approfondir mes connaissances et à développer mes compétences. Cette
-                dévotion se traduit par un investissement personnel constant et une volonté de toujours donner le meilleur de
-                moi-même.
+                En parallèle, je pratique le sport, qui m’apporte rigueur et équilibre, et je m’intéresse aux jeux vidéo, notamment pour leur aspect technique et leur architecture.
               </p>
               <p className="text-xl text-muted-foreground leading-relaxed mt-6 group-hover:text-foreground transition-colors duration-300 group-hover:[text-shadow:0_0_8px_rgba(139,92,246,0.4)]">
-                Pour l&apos;avenir, je souhaite poursuivre mes études en licence professionnelle dans le domaine des Sciences et
-                Technologies, mention Administration et Sécurité des Systèmes et des Réseaux. Cette formation correspond parfaitement
-                à mes aspirations et me permettra d&apos;approfondir encore davantage mes connaissances en cybersécurité et en
-                administration de systèmes, tout en me préparant aux défis technologiques de demain.
+                À l’issue de mon BTS, je souhaite poursuivre mes études en licence professionnelle, mention Administration et Sécurité des Systèmes et des Réseaux, à l’Université Claude Bernard Lyon 1, afin de renforcer mes compétences et me préparer à une carrière dans l’informatique.
               </p>
             </div>
           </div>
@@ -118,9 +96,8 @@ export function AboutSection() {
             >
               <span className="mr-2">{isExpanded ? "Voir moins" : "En savoir plus"}</span>
               <ChevronDown
-                className={`w-4 h-4 transition-transform duration-300 ${
-                  isExpanded ? "rotate-180" : ""
-                }`}
+                className={`w-4 h-4 transition-transform duration-300 ${isExpanded ? "rotate-180" : ""
+                  }`}
               />
             </Button>
           </div>
@@ -136,20 +113,20 @@ export function AboutSection() {
                 style={{ transitionDelay: `${(index + 3) * 100}ms` }}
               >
                 {/* Lueur animée qui tourne autour des bords */}
-                <div 
+                <div
                   className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none overflow-hidden"
                   style={{
                     background: "conic-gradient(from 0deg, transparent 0%, rgba(139, 92, 246, 0.3) 10%, transparent 20%, transparent 100%)",
                   }}
                 >
-                  <div 
+                  <div
                     className="absolute inset-0 rounded-xl animate-rotate-glow"
                     style={{
                       background: "conic-gradient(from 0deg, transparent 0%, rgba(139, 92, 246, 0.5) 15%, transparent 30%, transparent 100%)",
                     }}
                   />
                 </div>
-                
+
                 <div className="relative z-10">
                   <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors duration-300">
                     <Icon className="w-6 h-6 text-primary" />
@@ -213,10 +190,10 @@ export function AboutSection() {
             >
               <div className="flex items-center gap-3 mb-4">
                 <Network className="w-6 h-6 text-primary" />
-                <h3 className="text-2xl font-semibold">Administrations et services réseaux</h3>
+                <h3 className="text-2xl font-semibold">Administration et services réseaux</h3>
               </div>
               <div className="flex flex-wrap gap-3">
-                {["Cisco Paket Tracer", "GLPI", "PowerShell", "Active Directory", "NGINX", "Wireshark"].map(
+                {["Cisco Packet Tracer", "GLPI", "PowerShell", "Active Directory", "NGINX", "Wireshark"].map(
                   (tool) => (
                     <div
                       key={tool}

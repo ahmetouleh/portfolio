@@ -1,4 +1,3 @@
-
 "use client"
 
 import { useInView } from "@/hooks/use-in-view"
@@ -15,6 +14,8 @@ import {
     History,
     MessageSquare,
     Sparkles, // Added Sparkles for the badge
+    Box,
+    Newspaper, // Added Newspaper icon for articles
 } from "lucide-react"
 import Image from "next/image" // Imported Image
 
@@ -48,10 +49,18 @@ export function TechWatchSection() {
             title: "Machine virtuelle (VM)",
             icon: Cpu,
             content: (
-                <ul className="list-disc list-inside space-y-1 text-muted-foreground">
-                    <li>Un ordinateur virtuel, mais qui fonctionne comme un vrai ordinateur.</li>
-                    <li>Équipée de son système d’exploitation (Windows, Linux…).</li>
-                </ul>
+                <div className="space-y-4 text-muted-foreground">
+                    <p>
+                        Une machine virtuelle est un ordinateur “virtuel” qui fonctionne exactement comme un vrai ordinateur, mais sans matériel physique séparé.
+                    </p>
+                    <ul className="list-disc list-inside space-y-1">
+                        <li>Elle a son processeur, sa mémoire, son disque dur et son système d’exploitation (Windows, Linux, etc.)</li>
+                        <li>Elle peut faire tourner des logiciels et stocker des fichiers comme un ordinateur normal</li>
+                    </ul>
+                    <p>
+                        Tout est géré par l’hyperviseur, qui partage les ressources de l’ordinateur physique.
+                    </p>
+                </div>
             ),
         },
         {
@@ -59,20 +68,48 @@ export function TechWatchSection() {
             icon: Server,
             content: (
                 <>
-                    <p className="mb-2">
-                        L’hyperviseur est le logiciel qui rend la virtualisation possible. Il permet de :
+                    <p className="mb-4">
+                        Un hyperviseur est un logiciel qui permet de créer et gérer des machines virtuelles, c’est-à-dire des ordinateurs “virtuels” qui fonctionnent sur un seul ordinateur physique.
                     </p>
-                    <ul className="list-disc list-inside space-y-1 text-muted-foreground">
-                        <li>Créer et gérer les machines virtuelles.</li>
-                        <li>Allouer la mémoire (RAM) et le processeur (CPU) à chaque VM.</li>
-                    </ul>
-                    <p className="mt-2 italic">Sans hyperviseur, il n’y a pas de virtualisation.</p>
-                    <h4 className="font-semibold mt-4 mb-2 text-primary">Exemples d’hyperviseurs :</h4>
-                    <ul className="list-disc list-inside space-y-1 text-muted-foreground">
-                        <li><span className="font-medium text-foreground">VMware ESXi</span> : très répandu en entreprise.</li>
-                        <li><span className="font-medium text-foreground">Proxmox VE</span> : gratuit, souvent utilisé dans le cadre des BTS.</li>
-                        <li><span className="font-medium text-foreground">Hyper-V</span> : solution proposée par Microsoft.</li>
-                    </ul>
+
+                    <div className="space-y-4">
+                        <div>
+                            <h4 className="font-semibold text-primary mb-2">Les hyperviseurs de type 1</h4>
+                            <p className="text-sm text-muted-foreground mb-2">
+                                Ils s’installent directement sur le matériel (bare-metal) et sont très performants.
+                            </p>
+                            <ul className="grid grid-cols-2 gap-2">
+                                {["VMware ESXi", "Hyper-V", "KVM", "Xen", "Proxmox", "bhyve"].map((item) => (
+                                    <li key={item} className="text-sm flex items-center gap-2">
+                                        <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                                        <span>{item}</span>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+
+                        <div>
+                            <h4 className="font-semibold text-primary mb-2">Les hyperviseurs de type 2</h4>
+                            <p className="text-sm text-muted-foreground mb-2">
+                                Ils s’installent sur un système d’exploitation existant (hosted) et sont plus faciles à utiliser.
+                            </p>
+                            <ul className="space-y-1">
+                                {[
+                                    { name: "VirtualBox", os: "Windows, Linux, macOS" },
+                                    { name: "VMware Workstation", os: "Windows, Linux" },
+                                    { name: "Parallels Desktop", os: "macOS" },
+                                ].map((item) => (
+                                    <li key={item.name} className="text-sm flex items-start gap-2">
+                                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2" />
+                                        <span>
+                                            <span className="font-medium text-foreground">{item.name}</span>
+                                            <span className="text-muted-foreground"> → {item.os}</span>
+                                        </span>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    </div>
                 </>
             ),
         },
@@ -127,26 +164,64 @@ export function TechWatchSection() {
             ),
         },
         {
-            title: "Tendances actuelles",
+            title: "La virtualisation dans le cloud",
             icon: TrendingUp,
             content: (
-                <ul className="space-y-2 text-muted-foreground">
-                    <li>
-                        <strong className="text-foreground">Virtualisation dans le cloud :</strong> VMware Cloud, Microsoft Azure
-                    </li>
-                    <li>
-                        <strong className="text-foreground">Sauvegardes automatisées :</strong> Veeam Backup, Duplicati
-                    </li>
-                    <li>
-                        <strong className="text-foreground">Haute disponibilité (Load Balancing) :</strong> HAProxy, Nginx
-                        <p className="text-sm mt-1 ml-4 opacity-80">
-                            Le load balancing sert à partager automatiquement le travail entre plusieurs machines virtuelles ou serveurs pour éviter qu’un seul serveur soit surchargé.
-                        </p>
-                    </li>
-                    <li>
-                        <strong className="text-foreground">PCA / PRA :</strong> Continuité et reprise d’activité (Zerto, Azure Site Recovery)
-                    </li>
-                </ul>
+                <div className="space-y-4 text-muted-foreground">
+                    <p>
+                        La virtualisation dans le cloud permet de créer des machines virtuelles hébergées dans des datacenters, sans avoir besoin de serveurs physiques dans l’entreprise. Plusieurs machines virtuelles peuvent fonctionner sur un même serveur grâce à un hyperviseur de type 1, installé directement sur le matériel.
+                    </p>
+                    <div>
+                        <p className="font-semibold mb-2 text-foreground">Des solutions de virtualisation cloud très utilisées aujourd’hui sont :</p>
+                        <ul className="list-disc list-inside space-y-1 ml-4">
+                            <li><strong className="text-foreground">Microsoft Azure</strong></li>
+                            <li><strong className="text-foreground">VMware Cloud</strong></li>
+                        </ul>
+                    </div>
+                    <p>
+                        Ces plateformes utilisent des hyperviseurs de type 1 afin de garantir de bonnes performances, une meilleure sécurité et une haute disponibilité. Les entreprises peuvent ainsi déployer rapidement des serveurs ou des applications, sans investissement matériel.
+                    </p>
+                    <p className="font-medium text-foreground">
+                        Aujourd’hui, la virtualisation dans le cloud est une technologie essentielle pour les infrastructures informatiques modernes.
+                    </p>
+                </div>
+            ),
+        },
+        {
+            title: "La Conteneurisation",
+            icon: Box,
+            content: (
+                <div className="space-y-4 text-muted-foreground">
+                    <p>
+                        La conteneurisation permet de faire tourner des applications dans des conteneurs, plus légers et rapides qu’une machine virtuelle.
+                        Contrairement à une VM, un conteneur partage l’OS de l’ordinateur et contient seulement l’application et ses dépendances, ce qui permet un démarrage rapide et une faible consommation de ressources.
+                    </p>
+
+                    <div>
+                        <h4 className="font-semibold text-primary mb-2">Logiciels principaux</h4>
+                        <ul className="list-disc list-inside space-y-1 ml-2">
+                            <li><strong className="text-foreground">Docker</strong> (le plus utilisé)</li>
+                            <li><strong className="text-foreground">Podman</strong></li>
+                            <li><strong className="text-foreground">Kubernetes</strong> (pour gérer plusieurs conteneurs)</li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h4 className="font-semibold text-primary mb-2">Avantages</h4>
+                        <ul className="space-y-2">
+                            {[
+                                { id: "1️⃣", text: "Pas de conflits : chaque application est isolée." },
+                                { id: "2️⃣", text: "Facile à déplacer : le même conteneur fonctionne sur n’importe quel ordinateur." },
+                                { id: "3️⃣", text: "Propre et rapide : supprimer un conteneur supprime tout, le système reste propre." },
+                            ].map((item) => (
+                                <li key={item.id} className="flex items-start gap-2">
+                                    <span className="text-lg shrink-0">{item.id}</span>
+                                    <span>{item.text}</span>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                </div>
             ),
         },
         {
@@ -173,9 +248,69 @@ export function TechWatchSection() {
         },
     ]
 
+    const articles = [
+        {
+            title: "Article : Docker vs VM",
+            type: "Comparatif",
+            date: "28/02/2025",
+            icon: Box,
+            content: (
+                <div className="space-y-4 text-muted-foreground">
+                    <div className="flex items-center gap-2 text-primary font-semibold">
+                        <Box className="w-5 h-5" />
+                        <span>Isolation et Performance</span>
+                    </div>
+                    <p className="text-sm">
+                        Cet article explique que <strong>Docker</strong> et les <strong>machines virtuelles</strong> permettent toutes deux d’isoler des applications, mais Docker est plus léger et rapide, idéal pour le cloud et les microservices, tandis que les VM offrent une isolation complète et sont adaptées aux applications anciennes ou sensibles en sécurité.
+                    </p>
+                    <p className="text-xs border-l-4 border-primary pl-3 italic text-muted-foreground/80">
+                        "Docker vs Virtual Machines : comparaison" - IONOS
+                    </p>
+                    <a
+                        href="https://www.ionos.fr/digitalguide/serveur/know-how/docker-vs-virtual-machines/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center text-primary text-sm font-medium hover:underline mt-1"
+                    >
+                        Lire l'article complet →
+                    </a>
+                </div>
+            ),
+        },
+        {
+            title: "Actualité : Faille VMware",
+            type: "Sécurité",
+            date: "28/03/2025",
+            icon: AlertTriangle,
+            content: (
+                <div className="space-y-4 text-muted-foreground">
+                    <div className="flex items-center gap-2 text-destructive font-semibold">
+                        <AlertTriangle className="w-5 h-5" />
+                        <span>Faille critique corrigée</span>
+                    </div>
+                    <p className="text-sm">
+                        Une faille de sécurité importante a été découverte et corrigée dans <strong>VMware Tools pour Windows</strong>.
+                        Cette vulnérabilité pourrait permettre à un attaquant de contourner l’authentification et d’accéder à des données sensibles.
+                    </p>
+                    <p className="text-xs border-l-4 border-primary pl-3 italic text-muted-foreground/80">
+                        "Une faille importante corrigée dans VMware Tools pour Windows" - Le Monde Informatique
+                    </p>
+                    <a
+                        href="https://www.lemondeinformatique.fr/actualites/lire-une-faille-importante-corrigee-dans-vmware-tools-pour-windows-96467.html"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center text-primary text-sm font-medium hover:underline mt-1"
+                    >
+                        Lire l'article complet →
+                    </a>
+                </div>
+            ),
+        },
+    ]
+
     return (
         <section id="veilles" className="min-h-screen py-20 px-8 bg-muted/30" ref={ref}>
-            <div className="max-w-6xl mx-auto">
+            <div className="max-w-7xl mx-auto">
                 <AnimatedTitle
                     className={`text-5xl font-bold mb-4 transition-all duration-1000 ${isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
                         }`}
@@ -189,7 +324,7 @@ export function TechWatchSection() {
                     Sujet : La Virtualisation
                 </p>
 
-                {/* Featured Image Section with "Personal Touch" */}
+                {/* Featured Image Section */}
                 <div
                     className={`relative w-full h-[250px] rounded-2xl overflow-hidden mb-16 shadow-2xl bg-black/40 transition-all duration-1000 delay-300 group ${isInView ? "opacity-100 scale-100" : "opacity-0 scale-95"
                         }`}
@@ -212,28 +347,58 @@ export function TechWatchSection() {
                     </div>
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-6">
-                    {sections.map((section, index) => {
-                        const Icon = section.icon
-                        return (
-                            <div
-                                key={section.title}
-                                className={`bg-card border border-border rounded-xl p-6 hover:border-primary transition-all duration-500 hover:shadow-lg ${isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-                                    }`}
-                                style={{ transitionDelay: `${index * 100}ms` }}
-                            >
-                                <div className="flex items-center gap-3 mb-4">
-                                    <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
-                                        <Icon className="w-5 h-5 text-primary" />
+                <div className="grid lg:grid-cols-3 gap-8">
+                    {/* Left Column: Core Concepts */}
+                    <div className="lg:col-span-2 grid md:grid-cols-2 gap-6">
+                        {sections.map((section, index) => {
+                            const Icon = section.icon
+                            return (
+                                <div
+                                    key={section.title}
+                                    className={`bg-card border border-border rounded-xl p-6 hover:border-primary transition-all duration-500 hover:shadow-lg ${isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+                                        }`}
+                                    style={{ transitionDelay: `${index * 100}ms` }}
+                                >
+                                    <div className="flex items-center gap-3 mb-4">
+                                        <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
+                                            <Icon className="w-5 h-5 text-primary" />
+                                        </div>
+                                        <h3 className="text-xl font-semibold">{section.title}</h3>
                                     </div>
-                                    <h3 className="text-xl font-semibold">{section.title}</h3>
+                                    <div className="text-muted-foreground leading-relaxed">
+                                        {section.content}
+                                    </div>
                                 </div>
-                                <div className="text-muted-foreground leading-relaxed">
-                                    {section.content}
-                                </div>
+                            )
+                        })}
+                    </div>
+
+                    {/* Right Column: News/Articles */}
+                    <div className={`lg:col-span-1 space-y-6 ${isInView ? "opacity-100 translate-x-0" : "opacity-0 translate-x-10"} transition-all duration-1000 delay-500`}>
+                        <div className="bg-card/50 backdrop-blur-sm border border-border rounded-xl p-6 sticky top-24">
+                            <h3 className="text-2xl font-bold mb-6 flex items-center gap-2">
+                                <Newspaper className="w-6 h-6 text-primary" />
+                                Actualités Récentes
+                            </h3>
+                            <div className="space-y-6">
+                                {articles.map((article, index) => (
+                                    <div key={index} className="group">
+                                        <div className="flex items-center justify-between mb-2 text-xs text-muted-foreground">
+                                            <span className="bg-primary/10 text-primary px-2 py-1 rounded-full">{article.type}</span>
+                                            <span>{article.date}</span>
+                                        </div>
+                                        <h4 className="font-semibold text-lg mb-2 group-hover:text-primary transition-colors">
+                                            {article.title}
+                                        </h4>
+                                        <div className="text-sm text-muted-foreground">
+                                            {article.content}
+                                        </div>
+                                        {index < articles.length - 1 && <div className="h-px bg-border my-6" />}
+                                    </div>
+                                ))}
                             </div>
-                        )
-                    })}
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>

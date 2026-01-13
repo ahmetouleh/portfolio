@@ -116,7 +116,7 @@ export function ContactSection() {
                 </div>
                 <div>
                   <p className="font-medium mb-1">Localisation</p>
-                  <p className="text-muted-foreground">Saint-Etienne et alentours</p>
+                  <p className="text-muted-foreground">Saint-Étienne et alentours</p>
                 </div>
               </div>
             </div>
