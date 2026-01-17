@@ -28,8 +28,7 @@ export function TechWatchSection() {
             icon: Search,
             content: (
                 <p>
-                    La virtualisation est une technologie incontournable en informatique. Elle permet aux entreprises d’optimiser
-                    l’utilisation de leurs serveurs, de réduire les coûts et de simplifier la gestion des systèmes informatiques.
+                    Pour mon portfolio, j’ai réalisé une veille technologique sur la virtualisation. J’ai choisi ce sujet car c’est une technologie très utilisée en entreprise, notamment pour les serveurs, le cloud et l’administration système, qui est directement liée au BTS SIO.
                 </p>
             ),
         },
@@ -241,8 +240,7 @@ export function TechWatchSection() {
             icon: MessageSquare,
             content: (
                 <p className="text-muted-foreground">
-                    La virtualisation est aujourd’hui indispensable pour les administrateurs systèmes et réseaux.
-                    Elle permet de créer une infrastructure plus simple, flexible et économique, tout en assurant sécurité et continuité des services.
+                    Pour conclure, cette veille technologique m’a permis de mieux comprendre les infrastructures modernes, le cloud et les enjeux de sécurité. La virtualisation est aujourd’hui indispensable pour les administrateurs systèmes et réseaux.
                 </p>
             ),
         },

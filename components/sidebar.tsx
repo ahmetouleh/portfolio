@@ -11,6 +11,7 @@ import { cn } from "@/lib/utils"
 const navItems = [
   { id: "accueil", label: "Accueil" },
   { id: "a-propos", label: "À propos" },
+  { id: "formations", label: "Formations" },
   {
     id: "epreuve-5",
     label: "Épreuve 5",
@@ -19,9 +20,8 @@ const navItems = [
       { id: "veilles", label: "Veille Technologique" },
     ]
   },
-  { id: "epreuve-6", label: "Épreuve 6" },
   { id: "projets", label: "Mes projets" },
-  { id: "formations", label: "Formations" },
+  { id: "epreuve-6", label: "Épreuve 6" },
   { id: "contact", label: "Contact" },
 ]
 
@@ -42,6 +42,7 @@ export function Sidebar() {
         "veilles",
         "formations",
         "projets",
+        "epreuve-6",
         "stages",
         "contact"
       ]

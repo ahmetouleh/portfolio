@@ -7,6 +7,7 @@ import { StagesSection } from "@/components/stages-section"
 import { ContactSection } from "@/components/contact-section"
 import { LoadingScreen } from "@/components/loading-screen"
 import { TechWatchSection } from "@/components/tech-watch-section"
+import { Epreuve6Section } from "@/components/epreuve6-section"
 
 export default function Home() {
   return (
@@ -21,6 +22,7 @@ export default function Home() {
           <TechWatchSection />
           <FormationsSection />
           <ProjectsSection />
+          <Epreuve6Section />
           <StagesSection />
           <ContactSection />
         </main>

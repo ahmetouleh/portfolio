@@ -25,7 +25,7 @@ const features = [
   {
     icon: Shield,
     title: "Réseau et Cybersécurité",
-    description: "Passionné par les réseaux et la cybersécurité, ce sont mes domaines de prédilection où je m'investis pleinement",
+    description: "Passionné par les réseaux et la cybersécurité, ce sont mes domaines de prédilection dans lesquels je m'investis pleinement",
   },
   {
     icon: Lightbulb,
