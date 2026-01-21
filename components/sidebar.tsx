@@ -1,6 +1,6 @@
 "use client"
 
-import { Github, Linkedin, Menu, X, ChevronRight } from "lucide-react"
+import { Github, Linkedin, Menu, X, ChevronRight, Briefcase, ScanSearch } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { useEffect, useState } from "react"
@@ -16,8 +16,8 @@ const navItems = [
     id: "epreuve-5",
     label: "Épreuve 5",
     children: [
-      { id: "stages", label: "Stages" },
-      { id: "veilles", label: "Veille Technologique" },
+      { id: "stages", label: "Stages", icon: Briefcase },
+      { id: "veilles", label: "Veille Technologique", icon: ScanSearch },
     ]
   },
   { id: "projets", label: "Mes projets" },
@@ -108,6 +108,17 @@ export function Sidebar() {
     )
   }
 
+  const openSection = (id: string) => {
+    setExpandedSections(prev => {
+      if (prev.includes(id)) return prev
+      return [...prev, id]
+    })
+  }
+
+  const closeSection = (id: string) => {
+    setExpandedSections(prev => prev.filter(item => item !== id))
+  }
+
   return (
     <aside className="fixed left-0 top-0 z-50 w-full md:w-52 md:h-screen bg-sidebar/95 backdrop-blur-md border-b md:border-b-0 md:border-r border-sidebar-border flex flex-col transition-all duration-300 shadow-2xl shadow-primary/5">
       <div className="flex flex-row md:flex-col items-center justify-between md:justify-start w-full px-4 py-3 md:py-8 md:px-6 z-10">
@@ -161,7 +172,13 @@ export function Sidebar() {
 
             if (item.children) {
               return (
-                <li key={item.id} className={cn("transform transition-all duration-500", isMenuOpen ? "translate-x-0 opacity-100" : "-translate-x-full opacity-0")} style={{ transitionDelay: `${index * 75}ms` }}>
+                <li
+                  key={item.id}
+                  className={cn("transform transition-all duration-500", isMenuOpen ? "translate-x-0 opacity-100" : "-translate-x-full opacity-0")}
+                  style={{ transitionDelay: `${index * 75}ms` }}
+                  onMouseEnter={() => openSection(item.id)}
+                  onMouseLeave={() => closeSection(item.id)}
+                >
                   <button
                     onClick={() => toggleSection(item.id)}
                     className={cn(
@@ -200,8 +217,10 @@ export function Sidebar() {
                                 : "text-sidebar-foreground/60 hover:text-white hover:bg-sidebar-accent/20"
                             )}
                           >
-                            <span className="relative z-10 flex items-center justify-between">
-                              {child.label}
+                            <span className="relative z-10 flex items-center gap-3">
+                              {/* @ts-ignore */}
+                              {child.icon && <child.icon size={14} className={cn("transition-colors", activeSection === child.id ? "text-primary" : "text-muted-foreground group-hover:text-white")} />}
+                              <span className="flex-1">{child.label}</span>
                               {activeSection === child.id && <div className="w-1.5 h-1.5 rounded-full bg-primary" />}
                             </span>
                           </button>

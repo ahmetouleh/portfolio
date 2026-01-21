@@ -4,6 +4,7 @@ import { useInView } from "@/hooks/use-in-view"
 import { AnimatedTitle } from "@/components/animated-title"
 import {
     Search,
+    Target,
     Brain,
     Cpu,
     Server,
@@ -24,12 +25,44 @@ export function TechWatchSection() {
 
     const sections = [
         {
-            title: "Introduction",
+            title: "Pourquoi ce choix ?",
+            icon: Target,
+            content: (
+                <div className="space-y-4">
+                    <p>
+                        J’ai choisi la virtualisation car c’est une technologie <strong>incontournable</strong> en entreprise,
+                        directement liée au BTS SIO.
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                        {["Serveurs", "Cloud", "Admin Sys"].map((tag) => (
+                            <span key={tag} className="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-medium">
+                                {tag}
+                            </span>
+                        ))}
+                    </div>
+                </div>
+            ),
+        },
+        {
+            title: "Méthodologie",
             icon: Search,
             content: (
-                <p>
-                    Pour mon portfolio, j’ai réalisé une veille technologique sur la virtualisation. J’ai choisi ce sujet car c’est une technologie très utilisée en entreprise, notamment pour les serveurs, le cloud et l’administration système, qui est directement liée au BTS SIO.
-                </p>
+                <div className="space-y-4">
+                    <p>
+                        Une démarche de veille <strong>régulière</strong> sur des sources spécialisées pour recouper et fiabiliser les informations.
+                    </p>
+                    <div className="bg-muted/50 rounded-lg p-3 space-y-2">
+                        <p className="text-xs font-semibold text-muted-foreground uppercase opacity-70">Sources principales</p>
+                        <div className="grid grid-cols-1 gap-1">
+                            {["Le Monde Informatique", "IONOS", "IT-Connect.fr"].map((source) => (
+                                <div key={source} className="flex items-center gap-2 text-sm font-medium">
+                                    <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                                    {source}
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
             ),
         },
         {

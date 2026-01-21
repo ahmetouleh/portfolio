@@ -177,7 +177,7 @@ export function HeroSection() {
           style={{ animationDelay: "600ms" }}
         >
           <span className="text-primary/60 font-mono">{"<"}</span>
-          Basé aux alentours de Saint-Étienne
+          Situé dans la région stéphanoise
           <span className="text-primary/60 font-mono">{" />"}</span>
         </p>
 
